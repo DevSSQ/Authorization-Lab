@@ -6,7 +6,6 @@ import { loginSchema, rigesterSchema } from '../zod_schema/auth.schema';
 
 
 
-
 const router =express.Router();
 
 router.post('/login',validate(loginSchema) ,loginHandller);

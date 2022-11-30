@@ -13,13 +13,13 @@ export const loginHandller = async (req: Request, res: Response) => {
       if (!user) {
         return res
           .status(400)
-          .json({ message: "wrong username or password !" });
+          .json({ message: " wrong username ! " });
       }
     const isValidPassword = await argon2.verify(user.password, password);
      if (!isValidPassword) {
     return res
       .status(400)
-      .json({ message: "wrong username or password !" });
+      .json({ message: " wrong password ! " });
   }
     return res.status(200).json({
         message:'Welcome Back !'
