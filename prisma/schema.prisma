@@ -13,20 +13,3 @@ model User {
   password String
   email    String @unique
 }
-
-model Student {
-  id    String @id @default(uuid())
-  name  String 
-  age   String
-  major String
-}
-
-model Classroom{
-  id   String @id @default(uuid())
-  name String
-}
-
-model Teacher {
-  id   String @id @default(uuid())
-  name String
-}
