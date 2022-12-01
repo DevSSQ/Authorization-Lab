@@ -29,8 +29,8 @@ export const loginHandller = async (req: Request, res: Response) => {
     return res.status(200).json({
         message:'Welcome Back !',
         token:token,
-    })
-  }
+    });
+  };
 
   export const rigesterHandller = async (req: Request, res: Response) => {
     try{
@@ -49,3 +49,26 @@ export const loginHandller = async (req: Request, res: Response) => {
             message:prismaError.message})
     }
 }
+
+export const getAllUsersHandler = async (req: Request, res: Response) => {
+  try {
+    const users = await prisma.user.findMany();
+    return res.status(200).json(users);
+  } catch (error) {
+    console.log(error);
+    const prismaError = error as PrismaClientKnownRequestError;
+    return res.status(400).json({
+      message: prismaError.message,
+    });
+  }
+};
+
+export const adminHandler = async (req: Request, res: Response) => {
+  return res
+    .status(200)
+    .json({ message: 'Hey admin with id' + res.locals.user.id });
+};
+
+export const userHandler = async (req: Request, res: Response) => {
+  return res.status(200).json({ message: 'Hey user' });
+};
